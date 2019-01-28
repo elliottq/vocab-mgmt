@@ -13,10 +13,11 @@ soup = BeautifulSoup(page, 'html.parser')
 
 # Scan for spanish words and english translations
 print("Get the vocabulary...")
-spanishList = soup.find_all("span","source--1F2Ol")
-englishList = soup.find_all("span","translation--2F5zL")
+spanishList = [ word.string for word in soup.find_all("span","source--1F2Ol")]
+englishList = [ word.string for word in soup.find_all("span","translation--2F5zL")]
 
 # Write the pairs to file, delimited
 with open(dstFile, 'w') as myFile:
     for spanishWord,englishWord in zip(spanishList,englishList):
         myFile.write(spanishWord.encode("UTF-8") + delimiter + englishWord.encode("UTF-8"))
+	myFile.write("\n")
