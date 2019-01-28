@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 
-srcFile = '/home/sean/code/palabras.html'
-dstFile = '/home/sean/code/vocabulary.csv'
+srcFile = 'palabras.html'
+dstFile = 'vocabulary.csv'
 delimiter = '\t'
 
 # Read word web page from file
@@ -19,4 +19,4 @@ englishList = soup.find_all("span","translation--2F5zL")
 # Write the pairs to file, delimited
 with open(dstFile, 'w') as myFile:
     for spanishWord,englishWord in zip(spanishList,englishList):
-        myFile.write(str(spanishWord) + delimiter + str(englishWord))
+        myFile.write(spanishWord.encode("UTF-8") + delimiter + englishWord.encode("UTF-8"))
