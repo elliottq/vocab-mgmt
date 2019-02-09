@@ -20,7 +20,6 @@ class TestFetchList(unittest.TestCase):
     testListName = 'verbs-followed-by-a'
     self.fetcher.getList(testListId, testListName)
     self.assertEqual(self.fetcher.page.status_code, 200)
-    
 
 if __name__ == '__main__':
   unittest.main()
