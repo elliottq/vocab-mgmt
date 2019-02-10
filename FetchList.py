@@ -18,7 +18,10 @@ class FetchList:
   """
   def getList(self):
     url = self.formUrl(self.listId,self.listName)
+    print "Fetching: ", url
     self.page = requests.get(url)
+    if self.page.status_code != 200:
+      raise Exception("Could not successfully retrieve web page")
 
   """
     Helper function to form URL
