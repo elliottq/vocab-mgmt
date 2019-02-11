@@ -29,6 +29,9 @@ class FetchList:
   def formUrl(self, listId, listName):
     return self.domain + str(listId) + '/' + str(listName)
 
+  def getPairs(self):
+    return zip(self.spanishVocab, self.englishVocab)
+
   """
     Main method to retrieve and parse vocabulary web page
   """
